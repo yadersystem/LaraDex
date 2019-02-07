@@ -13,7 +13,7 @@ class TrainerController extends Controller
      */
     public function index()
     {
-        return "Hola desde el controlador";
+        //return "Hola desde el controlador";
     }
 
     /**
@@ -34,7 +34,8 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->input('name'); //retorna el nombre unicamente
+        //return $request->all();
     }
 
     /**
