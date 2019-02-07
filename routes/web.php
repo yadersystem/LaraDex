@@ -37,7 +37,7 @@ Route::get('foo', function () {
 	}); */
 
 // referirce a una ruta por controlador
-	Route::get('prueba/{name}','PruebaController@prueba');
+	//Route::get('prueba/{name}','PruebaController@prueba');
 	Route::resource('trainers','TrainerController');
 
 	
