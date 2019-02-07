@@ -32,8 +32,12 @@ Route::get('foo', function () {
 		return "Yo Soy ".$name." ".$lastname;
 	});*/
 
-	Route::get('/name/{name}/lastname/{lastname?}',function($name,$lastname='Yepez'){
+	/*Route::get('/name/{name}/lastname/{lastname?}',function($name,$lastname='Yepez'){
 		return "Yo Soy ".$name." ".$lastname;
-	}); 
+	}); */
+
+// referirce a una ruta por controlador
+	Route::get('prueba/{name}','PruebaController@prueba');
+	Route::resource('trainers','TrainerController');
 
 	
