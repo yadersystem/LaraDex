@@ -44,9 +44,9 @@ class TrainerController extends Controller
         }
 
         $trainer=new Trainer();
-        $trainer->name=$request->input('name');
+        $trainer->name=$request->input('name'); // almacena el nombre en trainer
         $trainer->avatar=$name; // se asocia la imagen con el nombre del entrenador
-        $trainer->des=$request->input('des');
+        $trainer->des=$request->input('des'); // almacena la descripcion
         $trainer->save();
         return 'Saved';
 
