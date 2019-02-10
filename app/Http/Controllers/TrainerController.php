@@ -36,13 +36,21 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
+        // este if verifica si existe una imagen 
+        if ($request->hasFile('avatar')){ //verifica si es una archivo
+            $file=$request->file('avatar'); //guarda la imagen en la varible $file
+            $name=time().$file->getClientOriginalName(); // se le asigna un nombre a la imagen de manera unica
+            $file->move(public_path().'/images/',$name); // se mueve la imagen a una carpea llamada images
+        }
+
         $trainer=new Trainer();
         $trainer->name=$request->input('name');
+        $trainer->avatar=$name; // se asocia la imagen con el nombre del entrenador
+        $trainer->des=$request->input('des');
         $trainer->save();
-
         return 'Saved';
-        //return $request->input('name'); //retorna el nombre unicamente
-        //return $request->all();
+
+        //return $request;
     }
 
     /**
