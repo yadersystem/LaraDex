@@ -6,12 +6,13 @@
 	<div class="row">
 		@foreach($trainers as $trainer)
 		<div class="col-sm">
-			<div class="card" style="width: 18rem;">
-			  <img class="card-img-top" src="images/{{$trainer->avatar}}" alt="">
+			<div class="card text-center" style="width: 18rem; margin-top: 50px">
+			  <img style="height:100px; width:100px; background-color: #efefef; margin: 20px;"  class="card-img-top rounded-circle mx-auto d-block" src="images/{{$trainer->avatar}}" alt="">
 			  <div class="card-body">
 			    <h5 class="card-title">{{ $trainer->name }}</h5>
 			    <p class="card-text">{{ $trainer->des }}</p>
-			    <a href="#" class="btn btn-primary">Ver Entrenador</a>
+			    <!--a href="/trainers/{{-- $trainer->id --}}" class="btn btn-primary">Ver mas ...</a-->
+			    <a href="/trainers/{{ $trainer->slug }}" class="btn btn-primary">Ver mas ...</a>
 			  </div>
 			</div>
 		</div>

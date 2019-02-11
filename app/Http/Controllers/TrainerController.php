@@ -59,9 +59,15 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    //public function show($id)
+    //public function show(Trainer $trainer) // usando Implicit Binding
+    public function show($slug)
     {
-        //
+        //$trainer=Trainer::find($id);
+        //return $trainer;
+        
+        $trainer=Trainer::where('slug','=',$slug)->firstOrFail();// lanza una excepcion si no encuentra el modelo que se desea
+        return view('trainers.show',compact('trainer')); // compact le pasa toda la informacion del id a la vista show
     }
 
     /**
