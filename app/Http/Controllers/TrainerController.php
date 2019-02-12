@@ -76,9 +76,11 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    //public function edit($id)
+    public function edit(Trainer $trainer) // se utiliza Implicit binding
     {
-        //
+        return view('trainers.edit',compact('trainer')); // retorna la vista edit y le envia los datos
+        //return $trainer;
     }
 
     /**
@@ -88,9 +90,22 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    //public function update(Request $request, $id)
+    public function update(Request $request, Trainer $trainer) //usando implicit binding
     {
-        //
+        //para actualizar nustra informacion de trainer
+        //$trainer->fill($request->all()); // todo lo que venga en el $request sera capturado
+        $trainer->fill($request->except('avatar')); 
+        if ($request->hasFile('avatar')){ 
+            $file=$request->file('avatar'); 
+            $name=time().$file->getClientOriginalName(); 
+            $trainer->avatar=$name; // le da nuevo nombre a la imagen y remplaza la existente
+            $file->move(public_path().'/images/',$name); 
+        }
+        $trainer->save();// Almacena todos los cambios
+        return 'Updated';    
+        //return $request; 
+        //return $trainer;
     }
 
     /**

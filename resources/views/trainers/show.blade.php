@@ -9,6 +9,9 @@
 		<h5 class="card-title">{{$trainer->name}}</h5>
 		<h1>{{ $trainer->slug }}</h1>
 		<p>{{ $trainer->des }}</p>
+		<a href="/trainers/{{ $trainer->slug }}/edit" class="btn btn-primary">Editar</a>
 	</div>
+
+	
 	
 @endsection
