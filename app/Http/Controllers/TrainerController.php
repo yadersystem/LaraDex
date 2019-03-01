@@ -36,6 +36,14 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
+        // Validacion
+            $validateData=$request->validate([
+                'name'=>'required|max:10',
+                'avatar'=>'required|image',
+                'slug'=>'required',
+                'descripcion'=>'required'
+            ]);
+
         // este if verifica si existe una imagen 
         if ($request->hasFile('avatar')){ //verifica si es una archivo
             $file=$request->file('avatar'); //guarda la imagen en la varible $file

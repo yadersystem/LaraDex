@@ -3,6 +3,18 @@
 @section('title', 'Trainers Create')<!--Le coloca nombre al modulo-->
 
 @section('content') <!--invoca el contenido de app.blade-->
+	
+	@if ($errors->any())
+		<div class="alert alert-danger">
+			<ul>
+				@foreach($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+		
+	@endif
+
 	{!! Form::open(['route' => 'trainers.store','method'=>'POST','files'=>true]) !!}
 		
 		@include('trainers.form')
